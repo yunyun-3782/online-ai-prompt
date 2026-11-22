@@ -23,9 +23,9 @@
 
 1. 安装 [Tampermonkey](https://www.tampermonkey.net/) 或 [Violentmonkey](https://violentmonkey.github.io/)。
 2. 安装脚本：
-   - Greasy Fork：发布后搜索「AI 在线版提示词」。
-   - 或在本仓库下载 `online-ai-prompt.user.js`，在脚本管理器里新建脚本并粘贴全文。
-   <!-- 发布后把 Greasy Fork / GitHub Release 直链补在这里 -->
+   - GitHub（推荐）：[在线安装 / 下载 latest](https://github.com/yunyun-3782/online-ai-prompt/releases/latest/download/online-ai-prompt.user.js)，脚本管理器会自动弹出安装。
+   - Greasy Fork：发布后搜索「AI 在线版提示词」（直链待补）。
+   - 或在本仓库下载 [`online-ai-prompt.user.js`](https://github.com/yunyun-3782/online-ai-prompt/blob/main/online-ai-prompt.user.js)，在脚本管理器里新建脚本并粘贴全文。
 3. 打开支持的站点，在脚本管理器菜单里设置系统提示词。
 
 ## 使用
