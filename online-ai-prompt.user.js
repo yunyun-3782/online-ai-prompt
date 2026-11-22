@@ -5,6 +5,7 @@
 // @namespace    https://www.caellab.com/
 // @version      2.7.0
 // @description  System-level system-prompt and time-context injection for online AI chat (DeepSeek, Tencent Yuanbao), by CaelLab
+// @description:en System-level system-prompt and time-context injection for online AI chat (DeepSeek, Tencent Yuanbao), by CaelLab
 // @description:zh-CN 为 DeepSeek、腾讯元宝等在线 AI 注入系统提示词与时间上下文（虚舟实验室出品）；自定义提示词覆盖内置身份说明，且每个对话只注入一次；提示词变更自动完整重注入；闲置超过1小时自动提醒，且重复提示词最多每2小时一次
 // @author       CaelLab
 // @author       Yunyun
