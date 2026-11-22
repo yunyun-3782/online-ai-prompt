@@ -3,7 +3,7 @@
 // @name:en      AI Online Prompt
 // @name:zh-CN   AI 在线版提示词
 // @namespace    https://www.caellab.com/
-// @version      2.6.0
+// @version      2.7.0
 // @description  System-level system-prompt and time-context injection for online AI chat (DeepSeek, Tencent Yuanbao), by CaelLab
 // @description:zh-CN 为 DeepSeek、腾讯元宝等在线 AI 注入系统提示词与时间上下文（虚舟实验室出品）；自定义提示词覆盖内置身份说明，且每个对话只注入一次；提示词变更自动完整重注入；闲置超过1小时自动提醒，且重复提示词最多每2小时一次
 // @author       CaelLab
@@ -12,6 +12,8 @@
 // @match        https://chat.deepseek.com
 // @match        https://chat.deepseek.com/*
 // @match        https://yuanbao.tencent.com/*
+// @homepageURL  https://www.caellab.com/
+// @supportURL   https://caellab.org/who-we-are/contact/
 // @grant        GM_registerMenuCommand
 // @grant        GM_getValue
 // @grant        GM_setValue
@@ -19,8 +21,36 @@
 // @grant        unsafeWindow
 // @run-at       document-start
 // @icon         https://www.caellab.com/favicon.ico
-// @license      CaelLab BY-SA Code License 3  https://www.caellab.com/license/cbs-v3
+// @license      MIT
 // ==/UserScript==
+
+/*
+MIT License
+
+Copyright (c) 2025 NoahTheGinger
+Copyright (c) 2025-2026 CaelLab (虚舟实验室) and Yunyun
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*/
+
+// Based on NoahTheGinger's "DeepSeek System Prompt Injector" (MIT):
+// https://greasyfork.org/en/scripts/542424-deepseek-system-prompt-injector
 
 (function () {
     "use strict";
@@ -131,7 +161,7 @@
 
     // Log function
     function log(...args) {
-        if (DEBUG) console.log("[AI 在线版提示词 v2.6]", ...args);
+        if (DEBUG) console.log("[AI 在线版提示词 v2.7]", ...args);
     }
 
     // 刷新后隐藏注入块
@@ -291,7 +321,7 @@
         return m ? m[1] : null;
     }
 
-    const SCRIPT_VERSION = (typeof GM_info !== "undefined" && GM_info.script && GM_info.script.version) || "2.6.0";
+    const SCRIPT_VERSION = (typeof GM_info !== "undefined" && GM_info.script && GM_info.script.version) || "2.7.0";
 
     function identityContext() {
         return `[System] This chat is served through the CaelLab AI Prompt client for ${SITE_NAME}, a browser integration ` +
@@ -710,12 +740,12 @@
         }
     }).observe(document, { subtree: true, childList: true });
 
-    log("Initialized v2.6");
+    log("Initialized v2.7");
     log("Current prompt:", systemPrompt);
     log("Enabled:", isEnabled);
 
     unsafeWindow.__caellabAiPrompt = {
-        version: "2.6.0",
+        version: "2.7.0",
         isEnabled: () => isEnabled,
         getPrompt: () => systemPrompt,
         reapply: applyInterceptions
